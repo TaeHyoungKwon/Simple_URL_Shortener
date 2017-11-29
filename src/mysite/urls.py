@@ -4,6 +4,6 @@ from django.shortcuts import redirect
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^services/', include("shortener.urls",namespace="shortener")),
+    url(r'', include("shortener.urls",namespace="shortener")),
     url(r'^$' , lambda r: redirect('shortener:home')),
 ]

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 
-from .models import ShortenURL
+from .models import ShortenURL, Information
 from .forms import CreateShortenURLForm
 
 
@@ -32,6 +32,21 @@ def shortener_home(request):
 
 def shortener_detail(request,additional_url):
     instance = get_object_or_404(ShortenURL,additional_url=additional_url)
-    context = {'instance':instance}
+    inf = Information.objects.get(shorten_url=instance)
+    context = {
+        'instance':instance,
+        'information':inf,
+    }
+    
 
     return render(request,'shortener/detail.html',context)
+
+
+def redirect_origin_url(request, additional_url):
+    instance = get_object_or_404(ShortenURL, additional_url=additional_url)
+
+    inf = Information.objects.get(shorten_url=instance)
+    inf.hit += 1
+    inf.save()
+
+    return HttpResponseRedirect(instance.origin_url)
