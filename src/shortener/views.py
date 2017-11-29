@@ -8,15 +8,16 @@ from .forms import CreateShortenURLForm
 def shortener_home(request):
     if request.method == 'POST':
         form = CreateShortenURLForm(request.POST or None)
-        
+
         if form.is_valid():
-            print(form.cleaned_data.get('url'))
-            new_url = form.cleaned_data.get("url")
-            obj, created = ShortenURL.obejcts.get_or_create(origin_url=new_url)
+            new_url = form.cleaned_data.get("origin_url")
+            instance, created = ShortenURL.objects.get_or_create(origin_url=new_url)
             context = {
-                "object" : obj,
+                "instance" : instance,
                 "created":created,
             }
+            return HttpResponseRedirect(instance.get_absolute_url())
+
         else:
             context ={
                 "form":form
