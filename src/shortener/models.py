@@ -11,7 +11,7 @@ class ShortenURL(models.Model):
         return self.origin_url
     
     def save(self, *args, **kwargs):
-        self.additional_url = random_generate_additional_url()
+        self.additional_url = random_generate_additional_url(self)
         super(ShortenURL, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
