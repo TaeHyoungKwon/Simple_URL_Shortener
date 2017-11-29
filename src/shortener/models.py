@@ -13,3 +13,7 @@ class ShortenURL(models.Model):
     def save(self, *args, **kwargs):
         self.additional_url = random_generate_additional_url()
         super(ShortenURL, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        from django.core.urlresolvers import reverse
+        return reverse('home')
