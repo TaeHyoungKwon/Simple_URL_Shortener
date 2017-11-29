@@ -29,7 +29,12 @@ class Information(models.Model):
     shorten_url = models.OneToOneField(ShortenURL, on_delete=models.CASCADE)
     hit = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    
 
     def __str__(self):
         return str(self.shorten_url)
+
+
+class HitUpdatedTime(models.Model):
+    information = models.ForeignKey(Information, related_name='updated_time')
+    updated_at = models.DateTimeField(auto_now=True)

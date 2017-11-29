@@ -13,3 +13,6 @@ def validate_url(value):
 def validate_first_essential_part(value):
     if not "http://" in value:
         raise ValidationError("You have to Add 'http://' front of your origin_url!")
+
+
+        

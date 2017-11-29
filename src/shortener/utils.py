@@ -1,7 +1,6 @@
 import random
 import string
 
-
 def random_generate_additional_url(instance):
     charaters = string.ascii_lowercase + string.digits + string.ascii_uppercase
     additional_url = "".join([random.choice(charaters) for _ in range(8)])

@@ -1,6 +1,14 @@
 {{instance.origin_url}}
 <br>
 {{information.hit}}
+<br>
+{{information.created_at}}
+
+<br>
+<br>
+{% for hit_time in information.updated_time.all %}
+    {{ hit_time.updated_at}}
+{% endfor %}
 
 <hr>
 
