@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def shortener_home(reqeust):
+    return render(request,'shortener/home.html',{})
