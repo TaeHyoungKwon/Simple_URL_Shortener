@@ -16,4 +16,4 @@ class ShortenURL(models.Model):
 
     def get_absolute_url(self):
         from django.core.urlresolvers import reverse
-        return reverse('home')
+        return reverse('shortener:detail', kwargs={'additional_url': self.additional_url})
