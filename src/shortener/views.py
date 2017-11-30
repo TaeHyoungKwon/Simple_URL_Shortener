@@ -5,6 +5,7 @@ from .models import ShortenURL, Information, HitUpdatedTime
 from .forms import CreateShortenURLForm
 
 
+
 def shortener_home(request):
     if request.method == 'POST':
         form = CreateShortenURLForm(request.POST or None)
@@ -30,22 +31,26 @@ def shortener_home(request):
     return render(request,'shortener/home.html',context)
 
 
+
 def shortener_detail(request,additional_url):
 
     instance = get_object_or_404(ShortenURL,additional_url=additional_url)
     information, created = Information.objects.get_or_create(shorten_url=instance)
+    qs = HitUpdatedTime.objects.all().filter(information=information).order_by("-updated_at")[:5]
+
+    created_at = instance.created_at.strftime('%b %d, %Y')
+
 
     context = {
         'instance':instance,
+        'hit_date':qs,
         'information':information,
+        'created_at' : created_at,
     }
     return render(request,'shortener/detail.html',context)
 
-    
 
     
-
-
 def redirect_origin_url(request, additional_url):
     instance = get_object_or_404(ShortenURL, additional_url=additional_url)
 

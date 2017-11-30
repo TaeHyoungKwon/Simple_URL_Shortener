@@ -1,6 +1,9 @@
 from django.db import models
 from .utils import random_generate_additional_url
 from .validation import validate_url, validate_first_essential_part
+from django.conf import settings
+
+from datetime import datetime
 
 class ShortenURL(models.Model):
     origin_url = models.CharField(max_length=200, unique=True, validators=[validate_url, validate_first_essential_part])
@@ -38,3 +41,6 @@ class Information(models.Model):
 class HitUpdatedTime(models.Model):
     information = models.ForeignKey(Information, related_name='updated_time')
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.information) + str(self.updated_at)
