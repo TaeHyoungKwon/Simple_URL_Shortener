@@ -6,6 +6,7 @@ from django.conf import settings
 from datetime import datetime
 
 class ShortenURL(models.Model):
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL)
     origin_url = models.CharField(max_length=200, unique=True, validators=[validate_url, validate_first_essential_part])
     additional_url = models.CharField(max_length=8)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -40,6 +41,7 @@ class Information(models.Model):
 
 class HitUpdatedTime(models.Model):
     information = models.ForeignKey(Information, related_name='updated_time')
+    clicked_user = models.ForeignKey(settings.AUTH_USER_MODEL,null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):

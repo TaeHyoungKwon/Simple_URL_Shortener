@@ -12,12 +12,21 @@ def shortener_home(request):
 
         if form.is_valid():
             new_url = form.cleaned_data.get("origin_url")
-            instance, created = ShortenURL.objects.get_or_create(origin_url=new_url)
-            context = {
-                "instance" : instance,
-                "created":created,
-            }
-            return HttpResponseRedirect(instance.get_absolute_url())
+            confirm = ShortenURL.objects.filter(origin_url=new_url)
+            if confirm.exists():
+                instance = ShortenURL.objects.get(origin_url=new_url)
+                return HttpResponseRedirect(instance.get_absolute_url())            
+            
+            else:
+                owner = request.user
+                instance, created = ShortenURL.objects.get_or_create(origin_url=new_url, owner=owner)
+                print(instance)
+                print(created)
+                context = {
+                    "instance" : instance,
+                    "created":created,
+                }
+                return HttpResponseRedirect(instance.get_absolute_url())
 
         else:
             context ={
@@ -39,7 +48,7 @@ def shortener_detail(request,additional_url):
     qs = HitUpdatedTime.objects.all().filter(information=information).order_by("-updated_at")[:5]
 
     created_at = instance.created_at.strftime('%b %d, %Y')
-
+    
 
     context = {
         'instance':instance,
@@ -59,6 +68,7 @@ def redirect_origin_url(request, additional_url):
     inf.save()
 
     time = HitUpdatedTime.objects.create(information=inf)
+    time.clicked_user = request.user
     time.save()
 
     return HttpResponseRedirect(instance.origin_url)
