@@ -37,7 +37,7 @@ input[type="month"] {
   width: 50%;
   margin: auto;
   padding: 0.75rem 2rem;
-  font-size: 2.875rem;
+  font-size: 1.875rem;
   line-height: 1.5;
   color: #443361;
   background-color: #f7f7f9;
@@ -250,7 +250,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 #shorten_url
 {
   color:rgba(238, 12, 42, 0.822);
-  font-size:10px;
+  font-size:15px;
 }
 
 #click

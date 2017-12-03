@@ -1,17 +1,13 @@
-
-{% extends "shortener/base.html"%}
-
-{% load crispy_forms_tags %}
-
-{% block content %}
+ {% extends "shortener/base.html"%} {% load crispy_forms_tags %} {% block content %}
 
 <div class="inner cover">
-    <h1 class="cover-heading">SUBMIT URL <br>YOU WANT TO SHORTEN.</span></h1>
+    <h1 class="cover-heading">SUBMIT URL
+        <br>YOU WANT TO SHORTEN.</span>
+    </h1>
     <br>
-    <div  class="col-md-12 offset-md-5">
-        <form style="text-align:center"  method="POST" action="" enctype="multipart/form-data"> {% csrf_token %}   
-            {% crispy form %}
-            <br>   
+    <div class="col-md-12 offset-md-5">
+        <form style="text-align:center" method="POST" action="" enctype="multipart/form-data"> {% csrf_token %} {% crispy form %}
+            <br>
         </form>
     </div>
 </div>

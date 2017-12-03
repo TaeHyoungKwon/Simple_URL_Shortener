@@ -207,50 +207,42 @@ body {
       width:50px;
   }
 
-
-  
-  .btncopy {
+  .button1 {
     border-radius: 4px;
     background-color: #cc2839;
     border: none;
     color: #FFFFFF;
     text-align: center;
-    font-size: 28px;
-    padding: 20px;
+    font-size: 14px;
+    
     width: 50px;
     transition: all 0.5s;
     cursor: pointer;
-    margin: 5px;
+    
   }
   
-  .btncopy span {
+  .button1 span {
     cursor: pointer;
     display: inline-block;
     position: relative;
     transition: 0.5s;
   }
   
-  .btncopy span:after {
+  .button1 span:after {
     content: '\00bb';
     position: absolute;
     opacity: 0;
     top: 0;
-    right: -20px;
+    right:-1
     transition: 0.5s;
   }
   
-  .btncopy:hover span {
+  .button1:hover span {
     padding-right: 25px;
   }
   
-  .btncopy:hover span:after {
+  .button1:hover span:after {
     opacity: 1;
-    right: 0;
-  }
+    right:1;
 
-  .btncopy{
-      width:50px;
   }
-  .input_size{
-    width:50px;
-}

@@ -1,9 +1,4 @@
-
-{% extends "shortener/base.html"%}
-
-{% load crispy_forms_tags %}
-
-{% block content %}
+{% extends "shortener/base.html"%} {% load crispy_forms_tags %} {% block content %}
 <br>
 <br>
 <div class="container">
@@ -11,15 +6,18 @@
         <div class="detail_part_1" class="col-md-8">
             <br>
             <br>
-            <span id="click">Result Shorten URL</span> <br>
+            <span id="click">Result Shorten URL</span>
+            <br>
             <div style="padding-left:20px;">
                 {{created_at}}
                 <br>
                 <span id="origin_url">{{instance.origin_url}}</span>
                 <br>
                 <a id="shorten_url" href="{{ instance.get_origin_url }}">http://localhost:8000/{{instance.additional_url}}</a>
-                <button onclick="myFunction()" class="button1" name="kwon" value="kwon"><span style="font-size:10px;">Copy</span></button>
-                
+                <button onclick="myFunction()" class="button1" name="kwon" value="kwon">
+                    <span style="font-size:10px;">Copy</span>
+                </button>
+
                 <br>
             </div>
         </div>
@@ -29,12 +27,16 @@
 
 <hr>
 <div class="container">
-    <div class="row">       
+    <div class="row">
         <div class="detail_part_1" class="col-md-8">
 
 
-                <div style="padding-left:20px;">
-                Total <span style="color:red;">{{ information.hit }} </span> Clicks      <a href="{{ instance.get_origin_url }}"><i class="fa fa-mouse-pointer" aria-hidden="true"></i></a> 
+            <div style="padding-left:20px;">
+                Total
+                <span style="color:red;">{{ information.hit }} </span> Clicks
+                <a href="{{ instance.get_origin_url }}">
+                    <i class="fa fa-mouse-pointer" aria-hidden="true"></i>
+                </a>
             </div>
 
         </div>
@@ -48,18 +50,16 @@
             <br>
             <div style="padding-left:20px;">
 
-                    
-                {% for hit_time in converted_date_value %}
-                    
-                    {{ hit_time}} - <span style="font-size:10px;">< before {{hit_time|timesince}} > </span>
-                    <br>
-                {% endfor %}                    
 
-                {% for hit_time in hit_date %}
-
-                    {{ hit_time.updated_at}} - <span style="font-size:10px;">< before {{hit_time.updated_at|timesince}} > by {{hit_time.clicked_user}}</span>
-                    <br>
-                {% endfor %}
+                {% for hit_time in converted_date_value %} {{ hit_time}} -
+                <span style="font-size:10px;">
+                    < before {{hit_time|timesince}}>
+                </span>
+                <br> {% endfor %} {% for hit_time in hit_date %} {{ hit_time.updated_at}} -
+                <span style="font-size:10px;">
+                    < before {{hit_time.updated_at|timesince}}>
+                </span>
+                <br> {% endfor %}
             </div>
         </div>
     </div>
@@ -67,10 +67,10 @@
 
 <br>
 <script>
-function myFunction() {
-    var copyText = document.getElementById("shorten_url").href;
-    prompt('Press Ctrl + C, then Enter to copy to clipboard', copyText);
-  }
+    function myFunction() {
+        var copyText = document.getElementById("shorten_url").href;
+        prompt('Press Ctrl + C, then Enter to copy to clipboard', copyText);
+    }
 </script>
 
 {% endblock content %}

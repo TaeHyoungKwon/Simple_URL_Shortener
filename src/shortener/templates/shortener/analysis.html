@@ -1,0 +1,16 @@
+{% extends "shortener/base.html"%} {% block content %}
+
+<div style='padding-top:100px;' class='container'>
+
+    <div class="row">
+        <div class="col-sm-7" url-endpoint='{% url "shortener:api-data" %}'>
+            <h2>Analysis: Click Count by each sites</h1>
+                <canvas id="myChart" width="100" height="60"></canvas>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
