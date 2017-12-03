@@ -1,21 +1,21 @@
-{% extends "shortener/base.html"%}
-
-{% block content %}
+{% extends "shortener/base.html"%} {% block content %}
 
 <div style='padding-top:100px;' class='container'>
-        
-    
-<div class="row">
-    <div class="col-sm-7" url-endpoint='{% url "shortener:api-data" %}'>
+
+
+    <div class="row">
+        <div class="col-sm-7" url-endpoint='{% url "shortener:api-data" %}'>
             <h2>List: Already exists shortened Web sites</h1>
-            <br>
-       {% for url in object_list%}
-        <p style="font-size:20px;"><a href="{% url 'shortener:detail' url.additional_url %}">{{url.origin_url}}</a> <span style='color:rgb(179, 179, 247);font-size:15px;'> </span></p> 
-        <span style="font-size:20px;">┗</span> <a id="shorten_url" href="{{ url.get_origin_url }}">http://localhost:8000/{{url.additional_url}}</a>
-        <hr>
-       {% endfor %}
+                <br> {% for url in object_list%}
+                <p style="font-size:20px;">
+                    <a href="{% url 'shortener:detail' url.additional_url %}">{{url.origin_url}}</a>
+                    <span style='color:rgb(179, 179, 247);font-size:15px;'> </span>
+                </p>
+                <span style="font-size:20px;">┗</span>
+                <a id="shorten_url" href="{{ url.get_origin_url }}">http://localhost:8000/{{url.additional_url}}</a>
+                <hr> {% endfor %}
+        </div>
     </div>
-</div>
 </div>
 
 {% endblock content %}
