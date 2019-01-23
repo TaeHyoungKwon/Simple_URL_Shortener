@@ -17,7 +17,7 @@
 
   ![ex_screenshot](./images/0009.jpg)
 
-[동작 화면 살펴보기]()
+[동작 화면 살펴보기](https://youtu.be/Y8Ah07a4M1E)
 
 
 
