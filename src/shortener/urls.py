@@ -19,7 +19,7 @@ urlpatterns = [
         views.shortener_detail, name='detail'),
 
     # Redirect URL
-    url(r'^(?P<additional_url>[\w-]+)$',
+    url(r'^(?P<additional_url>[\w-]+)/$',
         views.redirect_origin_url, name='redirect'),
 
 ]
