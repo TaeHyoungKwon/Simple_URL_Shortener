@@ -4,11 +4,7 @@
 
 
 
-![image-20190124084608365](./images/image-20190124084608365.png)
-
-
-
-사용자가 원하는 url을 입력하였을 때, 숫자와 알파벳이 섞인 임의의 6자리로 축약된 주소로 리다이렉팅 해주는 서비스
+##### 사용자가 원하는 url을 입력하였을 때, 숫자와 알파벳이 섞인 임의의 6자리로 축약된 주소로 리다이렉팅 해주는 서비스
 
 * 축약된 사이트에 대한 리스트 정보 제공
 
@@ -261,13 +257,58 @@ src
 
 ## Requirements
 
-보류
+>  URL을 입력 받아 짧게 줄이고, 생성된 짧은 URL을 입력하면 원래 URL로 리다이렉트 해주는 URL 단축 서비스를 개발하시오.
+
+
+
+예제
+
+INPUT : http://example.com/example1/example2
+
+OUTPUT : http://localhost/21oNcy
+
+
+
+기능
+
+1. URL 입력 폼 제공
+2. 단축 후 결과 출력
+3. 동일한 URL 입력할 경우 항상 동일한 shortening 결과 값이 나와야 함
+4. shortening의 결과 값은 8문자 이내로 생성
+5. 브라우저에서 shortening URL을 입력하면 원래 URL로 리다이렉트
+6. 도메인은 localhost로 처리
 
 
 
 ## How to solve problems
 
-보류
+기능
+
+1. URL 입력 폼 제공
+
+   > * 처음 들어오는 메인 페이지에서, URL을 입력 받도록 구현
+   > * bootstrap template 이용하여서 프론트 단 구현
+
+2. 단축 후 결과 출력
+
+   > * http://localhost/{단축된 URL}/status 에서 확인 가능
+   > * 메인 화면에서 URL 입력시, 위의 주소로 리다이렉트 하도록 구현
+
+3. 동일한 URL 입력할 경우 항상 동일한 shortening 결과 값이 나와야 함
+
+   > * 기존 데이터베이스에 존재 하는 URL을 입력하였을 시, 해당 URL로 미리 만들어진 status 페이지로 리다이렉팅
+
+4. shortening의 결과 값은 8문자 이내로 생성
+
+   > * 알파벳 소문자, 대문자, 숫자를 활용하여서, random으로 문자열을 생성하도록 함
+
+5. 브라우저에서 shortening URL을 입력하면 원래 URL로 리다이렉트
+
+   > * 서버를 켜놨을 시, 해당 URL 입력했을 때, 서버 상에 구현된 Controller 로직을 타도록 하였음
+
+6. 도메인은 localhost로 처리
+
+
 
 
 
